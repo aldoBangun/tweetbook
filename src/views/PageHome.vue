@@ -2,6 +2,7 @@
    <div class=" border-t border-gray-200 border-solid pt-8">
       <div class="container relative rounded-md">
          <button
+            @click="createPost"
             class="
                absolute
                -top-12
@@ -20,7 +21,7 @@
          >
             <BIconPlusLg />
          </button>
-
+         <PostCreate />
          <PostList />
       </div>
    </div>
@@ -28,12 +29,19 @@
 
 <script>
 import PostList from '../components/PostList.vue'
-import { BIconPlusLg } from "bootstrap-icons-vue";
+import PostCreate from '../components/PostCreate.vue'
+import { BIconPlusLg } from "bootstrap-icons-vue"
 
 export default {
    components: {
       BIconPlusLg,
-      PostList
+      PostList,
+      PostCreate
    },
+   methods: {
+      createPost() {
+         this.$store.commit('SET_MODAL_CREATE', true)
+      }      
+   }
 };
 </script>

@@ -27,13 +27,18 @@ const store = createStore({
                },
                createdAt: '20 July 2021'
             },
-         ]
+         ],
+         modal: {
+            create: false,
+            update: false,
+            delete: false
+         }
       }
    },
    getters: {
       posts(state) {
          return state.posts
-      }
+      },
    },
    mutations: {
       ADD_POST(state, payload) {
@@ -41,7 +46,16 @@ const store = createStore({
       },
       SET_POSTS(state, payload) {
          state.posts = payload
-      }
+      },
+      SET_MODAL_CREATE(state, payload) {
+         state.modal.create = payload
+      },
+      SET_MODAL_UPDATE(state, payload) {
+         state.modal.update = payload
+      },
+      SET_MODAL_DELETE(state, payload) {
+         state.modal.delete = payload
+      },
    },
    actions: {
       async loadPosts(context) {
